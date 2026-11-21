@@ -131,7 +131,7 @@ class PowerLoadPredict:
 
     # 可视化预测结果
     def prediction_plot(self, evaluate_df):
-        fig = plt.figure(figsize=(20, 80))
+        fig = plt.figure(figsize=(20, 6))
         # 创建子图
         ax = fig.add_subplot()
         # 填充数据
@@ -152,7 +152,9 @@ class PowerLoadPredict:
         ax.set_xlabel("时间")
         ax.set_ylabel("负荷")
         # 调整刻度
-        ax.xaxis.set_major_locator(mick.MultipleLocator(base=50))
+        ax.xaxis.set_major_locator(mick.MaxNLocator(nbins=14))
+        plt.setp(ax.get_xticklabels(), rotation=30, ha="right", fontsize=8)
+        plt.tight_layout()
         # 添加网格
         ax.grid(True)
         # 启用图例
